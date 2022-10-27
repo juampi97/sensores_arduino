@@ -10,9 +10,12 @@ float c1 = 0.6767648808e-03, c2 = 2.230548473e-04, c3 = 0.7158393331e-07; // coe
 
 float tempShow = 0;
 
-void setup()
+int serialTemp;
+
+    void
+    setup()
 {
-  Serial.begin(9600);
+  Serial.begin(115200);
 
   lcd.init();
   lcd.backlight();
@@ -35,9 +38,13 @@ void loop()
     tempShow = TEMPERATURA;
   }
 
-  Serial.print("Temperatura: ");
-  Serial.print(TEMPERATURA);
-  Serial.println(" C");
+  // Serial.print("Temperatura: ");
+
+  serialTemp = (int)TEMPERATURA;
+
+  Serial.println(serialTemp);
+  Serial.flush();
+  // Serial.println(" C");
 
   if (((tempShow + 0.5) <= TEMPERATURA) || ((tempShow - 0.5) >= TEMPERATURA))
   {
